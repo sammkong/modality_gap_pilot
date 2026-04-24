@@ -24,3 +24,7 @@ Thumbs.db
 # Secrets
 *.env
 credentials.json
+
+# Markdown docs
+*.md
+!README.md

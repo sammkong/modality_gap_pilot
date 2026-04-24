@@ -37,5 +37,7 @@ def resolve_from_base(config: Mapping[str, Any], relative_path: str) -> Path:
     """Return an absolute path below the configured environment-specific base path."""
     if not relative_path:
         raise ValueError("relative_path must be a non-empty string.")
+    if Path(relative_path).is_absolute():
+        raise ValueError("relative_path must be a relative path, not an absolute path.")
 
     return get_base_path(config) / relative_path

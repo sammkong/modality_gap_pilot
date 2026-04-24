@@ -9,12 +9,18 @@ from typing import Any
 
 import torch
 
+from src.utils.logging_utils import get_logger
+
+
+logger = get_logger(__name__)
+
 
 def save_cache(data: Any, cache_path: str | Path) -> Path:
     """Save data to a torch cache file, creating parent directories when needed."""
     path = Path(cache_path)
     path.parent.mkdir(parents=True, exist_ok=True)
     torch.save(data, path)
+    logger.info("Saved cache to %s", path)
     return path
 
 
@@ -30,4 +36,5 @@ def load_cache(cache_path: str | Path, *, map_location: str | torch.device | Non
     if not path.is_file():
         raise FileNotFoundError(f"Cache path is not a file: {path}")
 
+    logger.info("Loading cache from %s", path)
     return torch.load(path, map_location=map_location)
