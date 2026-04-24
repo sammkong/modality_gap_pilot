@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+
+# Data and large caches
+data/
+cache/
+*.pt
+*.pth
+*.bin
+
+# Notebook / local runtime artifacts
+.ipynb_checkpoints/
+sample_data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.env
+credentials.json

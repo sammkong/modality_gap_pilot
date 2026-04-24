@@ -1,0 +1,42 @@
+# ========== Paths ==========
+paths:
+  base_local: "./"
+  base_colab: "/content/drive/MyDrive/modality_gap_pilot/"
+
+  coco_annotations: "data/reference/coco_captions_val.json"
+  coco_images: "data/reference/coco_images/"
+  vqav2_annotations: "data/eval/vqav2_val_subset.json"
+  vqav2_images: "data/eval/vqav2_images/"
+
+  cache_embeddings_dir: "cache/embeddings"
+  cache_centroids_dir: "cache/centroids"
+  outputs_stage1_dir: "outputs/stage1"
+  outputs_stage2_dir: "outputs/stage2"
+  outputs_stage3_dir: "outputs/stage3"
+  outputs_stage4_dir: "outputs/stage4"
+  outputs_stage5_dir: "outputs/stage5"
+
+# ========== Models ==========
+models:
+  clip:
+    name: "openai/clip-vit-base-patch32"
+    dtype: "float16"
+  blip2:
+    name: "Salesforce/blip2-opt-2.7b"
+    load_in_4bit: true
+    max_new_tokens: 20
+
+# ========== Data sizes ==========
+data:
+  reference_n_pairs: 2000
+  eval_n_samples: 100
+
+# ========== Experiment ==========
+experiment:
+  seed: 42
+  normalize_embeddings: true
+
+# ========== Robustness check ==========
+robustness:
+  n_splits: 2
+  min_cosine_similarity: 0.95
